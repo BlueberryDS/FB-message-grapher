@@ -14,7 +14,7 @@ To run this program requires 2 dependencies.
   1. Navigate to your Facebook homepage, and click the menu in the top right corner. (Triangle shaped button)
   2. Click settings
   3. On this page you will find a blue link named "Download a copy" of your facebook data. Click this and go through the process to download
-  4. Run "python3 analyse-message <path-to-file>"
+  4. Run "python3 analyse-message \<path-to-file\>"
 
 ## Instructions
   
