@@ -65,16 +65,7 @@ def evaluate(inputString, actions) :
 
 def parseArguments(args) :
   try :
-    argsList = []
-    argsTokens = args.split(",")
-    for token in argsTokens :
-      strippedToken = token.strip()
-      mappedValue = variableMap.get(strippedToken)
-      if mappedValue != None :
-        argsList.append(mappedValue)
-      else :
-         argsList.append(literal_eval(strippedToken))
-    return argsList
+    return list(literal_eval("[" + args + "]"))
   except ValueError:
     raise CommandInvalid("Arguments cannot be parsed")
   
