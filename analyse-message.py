@@ -7,6 +7,7 @@ from exceptions import CommandInvalid
 from exceptions import CommandNotFound
 from commandEvaluator import evaluate
 from actions import Actions
+from pprint import pprint
 
 execName, filename = argv
 
@@ -26,7 +27,7 @@ print("Done...(%r mb)" % (getsizeof(content) / 1000000.0))
 print("Parsing contents...(warning this may take a long time)")
 
 parser = parser.FacebookParser()
-#parser.feed(content)
+parser.feed(content)
 result = parser.getData()
 total = parser.getNumMessages()
 del content
@@ -40,7 +41,11 @@ def startCommandInterpreter() :
   while True : 
     try:
       inputString = input(">>>> ")
-      print(evaluate(inputString, actions))
+      evaluation = evaluate(inputString, actions)
+      if not isinstance(evaluation, str) : 
+        pprint(evaluate(inputString, actions))
+      else : 
+        print(evaluation)
     except EOFError:
       return
     except KeyboardInterrupt:

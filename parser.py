@@ -3,6 +3,7 @@ import html.parser
 import html.entities
 from dateutil.parser import parse
 from datetime import datetime
+from utils import normalizeUserList
 
 #A simple parser for reading facebook.htm files
 
@@ -67,7 +68,7 @@ class FacebookParser(html.parser.HTMLParser):
     
     if domElement != None : 
       if domElement.name == THREAD :
-        data = tuple(sorted(domElement.data.split(", ")))
+        data = normalizeUserList(domElement.data)
         
         messages = self.userToMessages.get(data)
       
