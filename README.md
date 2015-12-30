@@ -8,7 +8,7 @@ Features include:
 ## Install Instructions
 To run this program requires 2 dependencies.
   - The latest version of python3
-  - The python-dateutils package (install using "pip" or the typical methods for your operating system)
+  - The python-dateutil package (install using "pip" or the typical methods for your operating system)
 
 ## Running
   1. Navigate to your Facebook homepage, and click the menu in the top right corner. (Triangle shaped button)
