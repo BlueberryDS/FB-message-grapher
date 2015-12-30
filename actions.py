@@ -1,3 +1,5 @@
+from utils import normalizeUserList
+
 #Contains various methods for acting on the data
 
 class Actions :
@@ -21,3 +23,12 @@ class Actions :
       return len(self.data[k])
     
     return sorted(self.data, key=keyfunction, reverse=True)[:num]
+  
+  def count(self, users) :
+    results = {}
+    for group in users:
+      if isinstance(group, tuple) :
+        results[group] = len(self.data.get(group))
+      elif isinstance(group, str) :
+        results[group] = len(self.data.get(normalizeUserList(group)))
+    return results

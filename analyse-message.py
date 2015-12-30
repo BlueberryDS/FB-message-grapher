@@ -1,8 +1,8 @@
 from zipfile import ZipFile
 from sys import argv
 from sys import getsizeof
-import traceback
-import parser
+from traceback import format_exc
+from parser import FacebookParser
 from exceptions import CommandInvalid
 from exceptions import CommandNotFound
 from commandEvaluator import evaluate
@@ -26,7 +26,7 @@ print("Done...(%r mb)" % (getsizeof(content) / 1000000.0))
 
 print("Parsing contents...(warning this may take a long time)")
 
-parser = parser.FacebookParser()
+parser = FacebookParser()
 parser.feed(content)
 result = parser.getData()
 total = parser.getNumMessages()
@@ -55,7 +55,7 @@ def startCommandInterpreter() :
     except CommandNotFound as e:
       print("The command you are looking for does not exist : " + e.value)
     except:
-      print("Exception : " + traceback.format_exc())
+      print("Exception : " + format_exc())
       
 startCommandInterpreter()
 
