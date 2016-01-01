@@ -1,7 +1,6 @@
 from exceptions import CommandInvalid
 from exceptions import CommandNotFound
 from inspect import ismethod
-from ast import literal_eval
 
 #Functions for evaluating commands
 
@@ -60,12 +59,12 @@ def evaluate(inputString, actions) :
     else :
       return commandMethod()
   except TypeError:
-    raise CommandInvalid("Arguments Invalid")
+    raise #CommandInvalid("Arguments Invalid")
   return "Command Success!"
 
 def parseArguments(args) :
   try :
-    return list(literal_eval("[" + args + "]"))
+    return list(eval("[" + args + "]", {'__builtins__': None}, variableMap))
   except ValueError:
     raise CommandInvalid("Arguments cannot be parsed")
   

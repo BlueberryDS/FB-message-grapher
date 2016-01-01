@@ -36,3 +36,30 @@ for entering commands. This is called the command prompt.
   The variable is automatically declared, or overwritten when stored to.
 
   To use this feature simply use the `to` directive. e.g `help to helpString`
+
+### Top most messaged
+  `top <num>`
+
+  Retrives the top num most messaged people
+
+### Count messages
+  `count [<list-of-groups>]`
+
+  Counts number of messages for each of the groups given.
+
+### Creates a scale
+  `scale \"<scale-type>\", <units>`
+
+  Creates a x-axis to base graph operations on.
+  
+  Current operations are "Weekly" and "Monthly"
+
+### Simple Frequency graph
+  `simple [<groups>], <scale>`
+
+   Creates a graph based on message count for the groups given
+
+### Write to CSV
+  `csv <data>, \"<file>\"`
+
+  Writes the data to a CSV file. This can then be used to create a graph in Excel.
