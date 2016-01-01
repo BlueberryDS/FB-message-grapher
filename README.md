@@ -7,6 +7,7 @@ Features include:
   - Finds top messaged users
   - Message counts
   - Message Frequency Graph over time
+  - Writes results to CSV
 
 ## Install Instructions
 To run this program requires 2 dependencies.
