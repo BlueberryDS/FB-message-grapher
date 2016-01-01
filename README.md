@@ -4,6 +4,9 @@ by Facebook, we retrieve all messages sent by your profile, and are able to run 
 
 Features include:
   - Reads entire Facebook message history
+  - Finds top messaged users
+  - Message counts
+  - Message Frequency Graph over time
 
 ## Install Instructions
 To run this program requires 2 dependencies.
