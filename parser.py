@@ -44,10 +44,6 @@ class FacebookParser(html.parser.HTMLParser):
       self.domStack.append(DomElement(THREAD))
       self.currentThread = []
     elif tag == "div" and classType == MESSAGE :
-      if self.currentMessage != None :
-        self.currentThread.append(self.currentMessage)
-        self.numMessages += 1
-	
       self.currentMessage = Message()
       self.domStack.append(DomElement(MESSAGE))
     elif tag == "div" and classType == MESSAGE_HEADER :
@@ -86,6 +82,9 @@ class FacebookParser(html.parser.HTMLParser):
         self.currentMessage.time = parse(domElement.data)
       elif domElement.name == TEXT :
         self.currentMessage.content = domElement.data
+        if self.currentMessage != None and self.currentMessage.content:
+          self.currentThread.append(self.currentMessage)
+          self.numMessages += 1
 
   def handle_data(self, data):
     domElement = self.domStack[-1] if self.domStack else None

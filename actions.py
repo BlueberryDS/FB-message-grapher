@@ -6,6 +6,7 @@ import csv
 
 class Actions :
   data = None
+  timeStep = timedelta(weeks=1)
   
   def __init__(self, data) :
     self.data = data
@@ -22,6 +23,8 @@ class Actions :
       helpString += "scale \"<scale-type>\", <units>  --   Creates a x-axis to base graph operations on \n"
     if command == None or command == "simple" :
       helpString += "simple [<groups>], <scale>     --   Creates a simple frequency count graph \n"
+    if command == None or command == "simplesplit" :
+      helpString += "simplesplit [<groups>], <scale>--   Creates a simple frequency count graph, with individual users \n"
     if command == None or command == "csv" :
       helpString += "csv <data>, \"<file>\"           --   Writes the given data to a csv file \n"
     if not helpString :
@@ -77,6 +80,40 @@ class Actions :
             i += 1
           counts.append(count)
         results.append(counts)
+      else :
+        raise ValueError("Group not found!")
+      
+    return results
+  
+  def simplesplit(self, groups, scale) :
+    groups = normalizeGroupList(groups)
+    results = [scale]
+    for group in groups:
+      messages = self.data.get(group)
+      if messages != None :
+        messages = sorted(messages, key=lambda x: x.time)
+        
+        counts = {}
+        i=0
+        datesUsed = 0
+        for date in scale[1:] :
+          count = {}
+          
+          while i < len(messages) and messages[i].time < date :
+            if messages[i].sender in count :
+              count[messages[i].sender] += 1
+            else :
+              count[messages[i].sender] = 1
+            i += 1
+          
+          for member in count :
+            if member in counts :
+              counts[member].append(count[member])
+            else :
+              counts[member] = [str(group) + ":" + str(member)] + [0] * datesUsed + [count[member]]
+              
+          datesUsed += 1
+        results.extend(list(counts.values()))
       else :
         raise ValueError("Group not found!")
       
