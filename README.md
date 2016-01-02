@@ -4,6 +4,10 @@ by Facebook, we retrieve all messages sent by your profile, and are able to run 
 
 Features include:
   - Reads entire Facebook message history
+  - Finds top messaged users
+  - Message counts
+  - Message Frequency Graph over time
+  - Writes results to CSV
 
 ## Install Instructions
 To run this program requires 2 dependencies.
@@ -48,7 +52,7 @@ for entering commands. This is called the command prompt.
   Counts number of messages for each of the groups given.
 
 ### Creates a scale
-  `scale \"<scale-type>\", <units>`
+  `scale "<scale-type>", <units>`
 
   Creates a x-axis to base graph operations on.
   
@@ -60,6 +64,6 @@ for entering commands. This is called the command prompt.
    Creates a graph based on message count for the groups given
 
 ### Write to CSV
-  `csv <data>, \"<file>\"`
+  `csv <data>, "<file>"`
 
   Writes the data to a CSV file. This can then be used to create a graph in Excel.
