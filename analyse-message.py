@@ -2,7 +2,7 @@ from zipfile import ZipFile
 from sys import argv
 from sys import getsizeof
 from traceback import format_exc
-from parser import FacebookParser
+from messageparser import FacebookParser
 from exceptions import CommandInvalid
 from exceptions import CommandNotFound
 from commandEvaluator import evaluate
