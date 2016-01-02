@@ -18,7 +18,7 @@ To run this program requires 2 dependencies.
   1. Navigate to your Facebook homepage, and click the menu in the top right corner. (Triangle shaped button)
   2. Click settings
   3. On this page you will find a blue link named "Download a copy" of your facebook data. Click this and go through the process to download
-  4. Run `python3 analyse-message <path-to-file>`
+  4. Run `python3 analyse-message.py <path-to-file>`
 
 ## Instructions
 After the analyser completes the parsing of all your messages, "Ready!" will be displayed, as well as a prompt
@@ -46,24 +46,29 @@ for entering commands. This is called the command prompt.
 
   Retrives the top num most messaged people
 
-### Count messages
+### Count Messages
   `count [<list-of-groups>]`
 
   Counts number of messages for each of the groups given.
 
-### Creates a scale
+### Creating a Scale
   `scale "<scale-type>", <units>`
 
   Creates a x-axis to base graph operations on.
   
   Current operations are "Weekly" and "Monthly"
 
-### Simple Frequency graph
+### Simple Frequency Graph
   `simple [<groups>], <scale>`
 
    Creates a graph based on message count for the groups given
 
+### Simple Split Frequency Graph
+  `simplesplit [<groups>], <scale>`
+
+   Creates a graph based on message count of individual users in the groups given
+
 ### Write to CSV
-  `csv <data>, "<file>"`
+ `csv <data>, "<file>"`
 
   Writes the data to a CSV file. This can then be used to create a graph in Excel.
